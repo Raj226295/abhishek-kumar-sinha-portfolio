@@ -44,22 +44,27 @@ const WorkSlider = () => {
       spaceBetween={10}
       pagination={{ clickable: true }}
       modules={[Pagination]}
-      className="h-[280px] sm:h-[480px]"
+      className="w-full !pb-10 sm:h-[480px]"
     >
       {workSlides.map((slide, slideIndex) => (
         <SwiperSlide key={slideIndex}>
-          <div className="grid grid-cols-2 grid-rows-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:grid-rows-2">
             {slide.map((project) => (
-              <div
-                className="group relative flex items-center justify-center overflow-hidden rounded-lg"
+              <Link
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`View ${project.title} live project`}
+                className="group relative block min-w-0 overflow-hidden rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                 key={project.title}
               >
-                <div className="group relative flex items-center justify-center overflow-hidden">
                   <Image
                     src={assetUrl(project.path)}
                     alt={`${project.title} website homepage`}
                     width={500}
                     height={300}
+                    sizes="(max-width: 639px) calc(100vw - 30px), (max-width: 1199px) 45vw, 32vw"
+                    className="block h-auto w-full object-contain"
                   />
 
                   <div
@@ -67,25 +72,18 @@ const WorkSlider = () => {
                     aria-hidden="true"
                   />
 
-                  <div className="absolute bottom-0 translate-y-full transition-all duration-300 group-hover:-translate-y-10 group-focus-within:-translate-y-10 group-hover:xl:-translate-y-20 group-focus-within:xl:-translate-y-20">
-                    <Link
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`View ${project.title} live project`}
-                      className="flex items-center gap-x-2 text-[13px] tracking-[0.2em] outline-none focus-visible:ring-2 focus-visible:ring-white"
-                    >
+                  <div className="absolute bottom-3 right-3 rounded-full bg-accent px-3 py-2 shadow-lg sm:bottom-0 sm:right-auto sm:left-1/2 sm:-translate-x-1/2 sm:translate-y-full sm:rounded-none sm:bg-transparent sm:px-0 sm:py-0 sm:shadow-none sm:transition-all sm:duration-300 sm:group-hover:-translate-y-10 sm:group-focus-visible:-translate-y-10 sm:group-hover:xl:-translate-y-20 sm:group-focus-visible:xl:-translate-y-20">
+                    <div className="flex items-center gap-x-2 whitespace-nowrap text-[13px] tracking-[0.2em]">
                       <div className="delay-100">LIVE</div>
-                      <div className="translate-y-[500%] transition-all delay-150 duration-300 group-hover:translate-y-0 group-focus-within:translate-y-0">
+                      <div className="sm:translate-y-[500%] sm:transition-all sm:delay-150 sm:duration-300 sm:group-hover:translate-y-0 sm:group-focus-visible:translate-y-0">
                         PROJECT
                       </div>
-                      <div className="translate-y-[500%] text-xl transition-all delay-150 duration-300 group-hover:translate-y-0 group-focus-within:translate-y-0">
+                      <div className="text-xl sm:translate-y-[500%] sm:transition-all sm:delay-150 sm:duration-300 sm:group-hover:translate-y-0 sm:group-focus-visible:translate-y-0">
                         <BsArrowRight aria-hidden="true" />
                       </div>
-                    </Link>
+                    </div>
                   </div>
-                </div>
-              </div>
+              </Link>
             ))}
           </div>
         </SwiperSlide>

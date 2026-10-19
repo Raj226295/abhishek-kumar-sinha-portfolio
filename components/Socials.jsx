@@ -32,7 +32,7 @@ export const socialData = [
 
 const Socials = () => {
   return (
-    <div className="flex items-center gap-x-5 text-lg">
+    <div className="flex items-center gap-x-1 text-lg sm:gap-x-5">
       {socialData.map((social, i) => (
         <Link
           key={i}
@@ -42,9 +42,9 @@ const Socials = () => {
           rel="noreferrer noopener"
           className={`${
             social.name === "Github"
-              ? "bg-accent rounded-full p-[5px] hover:text-white"
+              ? "bg-accent p-[5px] hover:text-white"
               : "hover:text-accent"
-          } transition-all duration-300`}
+          } flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full transition-all duration-300 xl:min-h-0 xl:min-w-0`}
         >
           <social.Icon aria-hidden />
           <span className="sr-only">{social.name}</span>

@@ -95,10 +95,10 @@ const About = () => {
   const [index, setIndex] = useState(0);
 
   return (
-    <div className="h-full bg-primary/30 py-32 text-center xl:text-left">
+    <div className="relative min-h-full overflow-x-hidden bg-primary/30 pb-28 pt-36 text-center sm:pt-40 xl:h-full xl:py-32 xl:text-left">
       <Circles />
 
-      <div className="container mx-auto h-full flex flex-col items-center xl:flex-row gap-x-6">
+      <div className="container mx-auto flex min-h-full flex-col items-center gap-x-6 gap-y-8 xl:h-full xl:flex-row xl:gap-y-0">
         {/* text */}
         <div className="flex-1 flex flex-col justify-center">
           <motion.h2
@@ -129,19 +129,23 @@ const About = () => {
             variants={fadeIn("right", 0.6)}
             initial="hidden"
             animate="show"
-            className="hidden md:flex md:max-w-xl xl:max-w-none mx-auto xl:mx-0 mb-8"
+            className="mx-auto mb-4 grid w-full max-w-xl grid-cols-2 gap-y-5 px-2 sm:px-0 md:mb-8 xl:mx-0 xl:max-w-none xl:grid-cols-4"
           >
-            <div className="flex flex-1 xl:gap-x-4">
+            <div className="contents">
               {stats.map((stat, statI) => (
                 <div
                   key={stat.label}
-                  className={`relative flex-1 px-2 first:pl-0 ${
-                    statI < stats.length - 1
-                      ? "after:w-[1px] after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0"
+                  className={`relative min-w-0 px-2 first:pl-0 ${
+                    statI % 2 === 0
+                      ? "after:absolute after:right-0 after:top-0 after:h-full after:w-[1px] after:bg-white/10"
+                      : ""
+                  } ${
+                    statI === 1
+                      ? "xl:after:absolute xl:after:right-0 xl:after:top-0 xl:after:h-full xl:after:w-[1px] xl:after:bg-white/10"
                       : ""
                   }`}
                 >
-                  <div className="text-xl xl:text-3xl font-extrabold text-accent mb-2 whitespace-nowrap">
+                  <div className="mb-2 text-lg font-extrabold text-accent sm:text-xl xl:text-3xl">
                     {stat.value}
                   </div>
                   <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[110px]">
@@ -159,24 +163,27 @@ const About = () => {
           initial="hidden"
           animate="show"
           exit="hidden"
-          className="flex flex-col w-full xl:max-w-[48%] h-[480px]"
+          className="relative z-20 flex w-full min-w-0 flex-col xl:h-[480px] xl:max-w-[48%]"
         >
-          <div className="flex gap-x-4 xl:gap-x-8 mx-auto xl:mx-0 mb-4">
+          <div className="mx-auto mb-4 flex w-full max-w-[420px] flex-nowrap items-center justify-between gap-2 sm:w-auto sm:max-w-none sm:justify-start sm:gap-x-4 xl:mx-0 xl:gap-x-8">
             {aboutData.map((item, itemI) => (
-              <div
+              <button
+                type="button"
                 key={itemI}
-                className={`${
-                  index === itemI &&
-                  "text-accent after:w-[100%] after:bg-accent after:transition-all after:duration-300"
-                } cursor-pointer capitalize xl:text-lg relative after:w-8 after:h-[2px] after:bg-white after:absolute after:-bottom-1 after:left-0`}
+                className={`relative min-h-[44px] shrink-0 cursor-pointer text-center text-[clamp(12px,3.5vw,16px)] capitalize after:absolute after:bottom-0 after:left-0 after:h-[2px] after:transition-all after:duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent xl:min-h-0 xl:text-lg ${
+                  index === itemI
+                    ? "text-accent after:w-full after:bg-accent"
+                    : "after:w-8 after:bg-white"
+                }`}
                 onClick={() => setIndex(itemI)}
+                aria-pressed={index === itemI}
               >
                 {item.title}
-              </div>
+              </button>
             ))}
           </div>
 
-          <div className="py-2 xl:py-6 flex flex-col gap-y-2 xl:gap-y-4 items-center xl:items-start">
+          <div className="flex flex-col items-center gap-y-2 py-2 xl:items-start xl:gap-y-4 xl:py-6" aria-live="polite">
             {aboutData[index].info.map((item, itemI) => (
               <div
                 key={itemI}

@@ -7,12 +7,12 @@ import { fadeIn } from "../../variants";
 
 const Services = () => {
   return (
-    <div className="h-full overflow-y-auto overflow-x-hidden bg-primary/30 py-32 xl:py-36">
+    <div className="relative min-h-full overflow-x-hidden bg-primary/30 pb-28 pt-36 xl:h-full xl:py-36">
       <Circles />
       <div className="container mx-auto min-h-full flex items-center">
         <div className="flex w-full flex-col gap-y-8 xl:flex-row xl:gap-x-10 xl:gap-y-0">
           {/* text */}
-          <div className="flex flex-col text-center lg:text-left xl:w-[30%] xl:shrink-0">
+          <div className="flex flex-col text-center xl:w-[30%] xl:shrink-0 xl:text-left">
             <motion.h2
               variants={fadeIn("up", 0.2)}
               initial="hidden"
@@ -27,7 +27,7 @@ const Services = () => {
               initial="hidden"
               animate="show"
               exit="hidden"
-              className="mb-4 max-w-[400px] mx-auto lg:mx-0"
+              className="mx-auto mb-4 max-w-[400px] xl:mx-0"
             >
               I create modern, responsive, and interactive digital experiences,
               combining creative design with powerful functionality to bring
@@ -41,7 +41,7 @@ const Services = () => {
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="w-full xl:max-w-[70%]"
+            className="min-w-0 w-full xl:max-w-[70%]"
           >
             <ServiceSlider />
           </motion.div>

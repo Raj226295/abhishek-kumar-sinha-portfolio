@@ -48,26 +48,27 @@ const TestimonialSlider = () => {
   return (
     <Swiper
       navigation
+      autoHeight
       pagination={{
         clickable: true,
       }}
       modules={[Navigation, Pagination]}
-      className="h-[500px] sm:h-[440px]"
+      className="highlight-swiper w-full !pb-12 md:!pb-10"
     >
       {projectHighlights.map((project) => (
         <SwiperSlide key={project.name}>
-          <div className="flex h-full flex-col items-center justify-center gap-6 px-12 md:flex-row md:gap-x-10 md:px-16 xl:gap-x-14">
+          <div className="flex flex-col items-center justify-center gap-6 px-4 pb-2 sm:px-12 md:min-h-[400px] md:flex-row md:gap-x-10 md:px-16 xl:gap-x-14">
             <div className="relative aspect-video w-full max-w-[460px] overflow-hidden rounded-xl border border-white/10 bg-primary/50 shadow-2xl">
               <Image
                 src={assetUrl(project.image)}
                 alt={`${project.name} website homepage`}
                 fill
-                sizes="(max-width: 767px) calc(100vw - 96px), 460px"
-                className="object-cover object-top transition-transform duration-500 hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none"
+                sizes="(max-width: 639px) calc(100vw - 62px), (max-width: 767px) calc(100vw - 126px), 460px"
+                className="object-contain object-top transition-transform duration-500 hover:scale-105 md:object-cover motion-reduce:transform-none motion-reduce:transition-none"
               />
             </div>
 
-            <div className="relative flex max-w-[480px] flex-1 flex-col justify-center text-center md:min-h-[230px] md:border-l md:border-white/20 md:pl-10 md:text-left xl:pl-14">
+            <div className="relative flex min-w-0 max-w-[480px] flex-1 flex-col justify-center text-center md:min-h-[230px] md:border-l md:border-white/20 md:pl-10 md:text-left xl:pl-14">
               <p className="mb-2 text-sm font-medium uppercase tracking-[0.18em] text-accent">
                 {project.category}
               </p>

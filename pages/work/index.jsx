@@ -7,12 +7,12 @@ import { fadeIn } from "../../variants";
 
 const Work = () => {
   return (
-    <div className="h-full overflow-y-auto overflow-x-hidden bg-primary/30 py-32 xl:py-36">
+    <div className="relative min-h-full overflow-x-hidden bg-primary/30 pb-28 pt-36 xl:h-full xl:py-36">
       <Circles />
       <div className="container mx-auto flex min-h-full items-center">
         <div className="flex w-full flex-col gap-x-8 xl:flex-row">
           {/* text */}
-          <div className="mb-8 flex flex-col text-center lg:text-left xl:mb-0 xl:w-[30vw]">
+          <div className="mb-8 flex flex-col text-center xl:mb-0 xl:w-[30vw] xl:text-left">
             <motion.h2
               variants={fadeIn("up", 0.2)}
               initial="hidden"
@@ -27,7 +27,7 @@ const Work = () => {
               initial="hidden"
               animate="show"
               exit="hidden"
-              className="mx-auto mb-4 max-w-[430px] lg:mx-0"
+              className="mx-auto mb-4 max-w-[430px] xl:mx-0"
             >
               Explore a collection of websites and applications I&apos;ve worked
               on, combining creative design, modern technologies, and
@@ -41,7 +41,7 @@ const Work = () => {
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="w-full xl:max-w-[65%]"
+            className="min-w-0 w-full xl:max-w-[65%]"
           >
             <WorkSlider />
           </motion.div>

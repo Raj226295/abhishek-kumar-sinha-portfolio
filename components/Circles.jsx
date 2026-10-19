@@ -3,10 +3,10 @@ import { assetUrl } from "../lib/assetUrl";
 
 const Circles = () => {
   return (
-    <div className="w-[200px] xl:w-[300px] absolute -right-16 -bottom-2 mix-blend-color-dodge animate-pulse duration-75 z-10">
+    <div className="pointer-events-none absolute -right-16 -bottom-2 z-10 w-[200px] select-none mix-blend-color-dodge animate-pulse duration-75 xl:w-[300px]" aria-hidden="true">
       <Image
         src={assetUrl("/circles.png")}
-        alt="circles"
+        alt=""
         width={260}
         height={200}
         className="w-full h-full"

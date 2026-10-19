@@ -51,8 +51,8 @@ const Contact = () => {
   };
 
   return (
-    <div className="h-full bg-primary/30">
-      <div className="container mx-auto py-32 text-center xl:text-left flex items-center justify-center h-full">
+    <div className="min-h-full bg-primary/30 xl:h-full">
+      <div className="container mx-auto flex min-h-full items-center justify-center pb-28 pt-36 text-center sm:pt-40 xl:h-full xl:py-32 xl:text-left">
         {/* text & form */}
         <div className="flex flex-col w-full max-w-[700px]">
           {/* text */}
@@ -61,7 +61,7 @@ const Contact = () => {
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="h2 text-center mb-12"
+            className="h2 mb-8 text-center sm:mb-12"
           >
             Let's <span className="text-accent">connect.</span>
           </motion.h2>
@@ -72,7 +72,7 @@ const Contact = () => {
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="flex-1 flex flex-col gap-6 w-full mx-auto"
+            className="mx-auto flex w-full flex-1 flex-col gap-4 sm:gap-6"
             onSubmit={handleSubmit}
             autoComplete="off"
             autoCapitalize="off"

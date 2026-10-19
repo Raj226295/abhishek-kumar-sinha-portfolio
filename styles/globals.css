@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  overflow-x: clip;
+}
+
 .translate-z-0 {
   transform: translateZ(0px);
 }
@@ -30,7 +34,7 @@
 .services-marquee {
   overscroll-behavior-inline: contain;
   scrollbar-width: none;
-  touch-action: pan-x;
+  touch-action: auto;
 }
 
 .services-marquee::-webkit-scrollbar {
@@ -61,16 +65,18 @@
 
 @layer base {
   body {
-    @apply bg-secondary overflow-hidden leading-relaxed;
+    @apply bg-secondary overflow-x-hidden leading-relaxed;
   }
   .page {
-    @apply w-full h-screen overflow-hidden;
+    @apply w-full h-[100dvh] min-h-[100svh] overflow-x-hidden overflow-y-auto xl:h-screen;
   }
   .h1 {
-    @apply text-[35px] leading-tight md:text-[60px] md:leading-[1.3] mb-8 font-semibold;
+    @apply leading-tight md:leading-[1.3] mb-8 font-semibold;
+    font-size: clamp(2rem, 5vw, 3.75rem);
   }
   .h2 {
-    @apply text-[35px] leading-tight md:text-[54px] md:leading-[1.3] mb-4 font-semibold;
+    @apply leading-tight md:leading-[1.3] mb-4 font-semibold;
+    font-size: clamp(2rem, 4.5vw, 3.375rem);
   }
   p {
     @apply leading-[1.8] text-white/60 font-light;
@@ -88,5 +94,12 @@
   }
   .textarea {
     @apply w-full h-[180px] p-6 rounded-lg resize-none;
+  }
+}
+
+@media (max-width: 639px) {
+  .highlight-swiper .swiper-button-next,
+  .highlight-swiper .swiper-button-prev {
+    display: none;
   }
 }

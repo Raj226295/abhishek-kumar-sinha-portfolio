@@ -8,21 +8,32 @@ import { fadeIn } from "../variants";
 
 const Home = () => {
   return (
-    <div className="bg-primary/60 h-full">
+    <div className="relative min-h-[100dvh] bg-primary/60 xl:h-full xl:min-h-0">
       {/* text */}
-      <div className="w-full h-full bg-gradient-to-r from-primary/10 via-black/30 to-black/10">
-        <div className="text-center flex flex-col justify-center xl:pt-40 xl:text-left h-full container mx-auto">
+      <div className="relative z-10 min-h-[100dvh] w-full bg-gradient-to-r from-primary/10 via-black/30 to-black/10 xl:pointer-events-none xl:h-full xl:min-h-0">
+        <div className="container mx-auto flex min-h-[100dvh] flex-col justify-center px-4 pb-28 pt-36 text-center sm:px-[15px] xl:h-full xl:min-h-0 xl:pb-0 xl:pt-40 xl:text-left">
           {/* title */}
           <motion.h1
             variants={fadeIn("down", 0.2)}
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="h1"
+            className="h1 break-words"
           >
             Crafting Digital <br />
             <span className="text-accent">Experiences That Inspire.</span>
           </motion.h1>
+
+          {/* portrait on smaller screens */}
+          <motion.div
+            variants={fadeIn("up", 0.5)}
+            initial="hidden"
+            animate="show"
+            exit="hidden"
+            className="relative mx-auto mb-4 h-[clamp(180px,55vw,280px)] w-full max-w-[280px] xl:hidden"
+          >
+            <Avatar />
+          </motion.div>
 
           {/* subtitle */}
           <motion.p
@@ -30,7 +41,7 @@ const Home = () => {
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-10 xl:mb-16"
+            className="mx-auto mb-8 max-w-sm xl:mx-0 xl:mb-16 xl:max-w-xl"
           >
             I&apos;m Raj Vardhan Singh, a Computer Science student and passionate
             Web Developer. I build modern, responsive, and interactive websites
@@ -46,14 +57,14 @@ const Home = () => {
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="hidden xl:flex"
+            className="hidden xl:pointer-events-auto xl:flex"
           >
             <ProjectsBtn />
           </motion.div>
         </div>
       </div>
       {/* image */}
-      <div className="w-[1280px] h-full absolute right-0 bottom-0">
+      <div className="pointer-events-none absolute bottom-0 right-0 h-full w-full overflow-hidden xl:pointer-events-auto xl:w-[1280px]">
         {/* bg img */}
         <div
           role="img"
@@ -71,7 +82,7 @@ const Home = () => {
           animate="show"
           exit="hidden"
           transition={{ duration: 1, ease: "easeInOut" }}
-          className="w-full h-full max-w-[737px] max-h-[678px] absolute -bottom-32 lg:bottom-0 lg:right-[8%]"
+          className="absolute -bottom-32 hidden h-full w-full max-h-[678px] max-w-[737px] lg:bottom-0 lg:right-[8%] xl:block"
         >
           <Avatar />
         </motion.div>

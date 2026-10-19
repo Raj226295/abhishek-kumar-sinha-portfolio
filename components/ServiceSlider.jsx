@@ -61,7 +61,7 @@ export const serviceData = [
 ];
 
 const ServiceCard = ({ item }) => (
-  <article className="group flex h-[270px] w-[min(85vw,360px)] shrink-0 flex-col rounded-lg border border-white/10 bg-[rgba(65,47,123,0.22)] px-6 py-6 transition-all duration-300 hover:-translate-y-[6px] hover:border-accent/50 hover:bg-[rgba(89,65,169,0.2)] hover:shadow-[0_12px_35px_rgba(241,48,36,0.12)] md:w-[360px] xl:w-[380px] motion-reduce:transform-none motion-reduce:transition-none">
+  <article className="group flex h-auto min-h-[300px] w-[min(85vw,360px)] shrink-0 flex-col rounded-lg border border-white/10 bg-[rgba(65,47,123,0.22)] px-6 py-6 transition-all duration-300 hover:-translate-y-[6px] hover:border-accent/50 hover:bg-[rgba(89,65,169,0.2)] hover:shadow-[0_12px_35px_rgba(241,48,36,0.12)] sm:h-[270px] sm:min-h-0 md:w-[360px] xl:w-[380px] motion-reduce:transform-none motion-reduce:transition-none">
     <div className="mb-4 text-4xl text-accent transition-transform duration-300 group-hover:scale-110 motion-reduce:transform-none motion-reduce:transition-none">
       <item.Icon aria-hidden />
     </div>
