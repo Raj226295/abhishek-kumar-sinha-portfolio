@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { HiArrowRight } from "react-icons/hi2";
+import { assetUrl } from "../lib/assetUrl";
 
 const ProjectsBtn = () => {
   return (
@@ -11,7 +12,7 @@ const ProjectsBtn = () => {
         className="relative w-[185px] h-[185px] flex justify-center items-center bg-circleStar bg-cover bg-center bg-no-repeat group"
       >
         <Image
-          src="/rounded-text.png"
+          src={assetUrl("/rounded-text.png")}
           alt="rounded text"
           width={141}
           height={148}

@@ -1,10 +1,11 @@
 import Image from "next/image";
+import { assetUrl } from "../lib/assetUrl";
 
 const Avatar = () => {
   return (
     <div className="hidden xl:flex xl:max-w-none w-full h-full pointer-events-none select-none">
       <Image
-        src="/raj-avatar-v2.png"
+        src={assetUrl("/raj-avatar-v2.png")}
         alt="Raj Vardhan Singh"
         width={1155}
         height={1362}

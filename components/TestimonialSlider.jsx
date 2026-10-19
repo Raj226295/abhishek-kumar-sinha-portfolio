@@ -3,6 +3,7 @@ import Link from "next/link";
 import { BsArrowUpRight } from "react-icons/bs";
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { assetUrl } from "../lib/assetUrl";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -58,7 +59,7 @@ const TestimonialSlider = () => {
           <div className="flex h-full flex-col items-center justify-center gap-6 px-12 md:flex-row md:gap-x-10 md:px-16 xl:gap-x-14">
             <div className="relative aspect-video w-full max-w-[460px] overflow-hidden rounded-xl border border-white/10 bg-primary/50 shadow-2xl">
               <Image
-                src={project.image}
+                src={assetUrl(project.image)}
                 alt={`${project.name} website homepage`}
                 fill
                 sizes="(max-width: 767px) calc(100vw - 96px), 460px"

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { BsArrowRight } from "react-icons/bs";
 import { Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { assetUrl } from "../lib/assetUrl";
 
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -55,7 +56,7 @@ const WorkSlider = () => {
               >
                 <div className="group relative flex items-center justify-center overflow-hidden">
                   <Image
-                    src={project.path}
+                    src={assetUrl(project.path)}
                     alt={`${project.title} website homepage`}
                     width={500}
                     height={300}

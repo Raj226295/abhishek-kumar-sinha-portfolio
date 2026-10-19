@@ -4,6 +4,7 @@ import Head from "next/head";
 import Header from "../components/Header";
 import Nav from "../components/Nav";
 import TopLeftImg from "../components/TopLeftImg";
+import { assetUrl } from "../lib/assetUrl";
 
 // setup font
 const sora = Sora({
@@ -16,6 +17,11 @@ const Layout = ({ children }) => {
   return (
     <main
       className={`page bg-site text-white bg-cover bg-no-repeat ${sora.variable} font-sora relative`}
+      style={{
+        "--bg-site-image": `url("${assetUrl("/site-bg.svg")}")`,
+        "--bg-explosion-image": `url("${assetUrl("/bg-explosion.png")}")`,
+        "--circle-star-image": `url("${assetUrl("/circle-star.svg")}")`,
+      }}
     >
       {/* metadata */}
       <Head>
@@ -30,6 +36,7 @@ const Layout = ({ children }) => {
         />
         <meta name="author" content="Raj Vardhan Singh" />
         <meta name="theme-color" content="#f13024" />
+        <link rel="icon" href={assetUrl("/favicon.ico")} />
       </Head>
 
       <TopLeftImg />
