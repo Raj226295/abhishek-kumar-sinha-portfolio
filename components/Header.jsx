@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import Socials from "../components/Socials";
@@ -9,14 +8,14 @@ const Header = () => {
       <div className="container mx-auto">
         <div className="flex flex-col lg:flex-row justify-between items-center gap-y-6 py-8">
           {/* logo */}
-          <Link href="/">
-            <Image
-              src="/logo.svg"
-              alt="logo"
-              width={220}
-              height={48}
-              priority
-            />
+          <Link
+            href="/"
+            aria-label="Raj Vardhan Singh — home"
+            className="text-[24px] md:text-[28px] leading-none whitespace-nowrap"
+          >
+            <span className="font-semibold">raj</span>{" "}
+            <span className="font-light">vardhan singh</span>
+            <span className="text-accent font-semibold">.</span>
           </Link>
 
           {/* socials */}

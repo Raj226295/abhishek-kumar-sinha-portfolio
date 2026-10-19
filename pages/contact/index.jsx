@@ -7,21 +7,47 @@ import { useState } from "react";
 const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
 
     const myForm = event.target;
     const formData = new FormData(myForm);
+    formData.set("_replyto", formData.get("email"));
+    formData.set("_url", window.location.href);
 
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(formData).toString(),
-    })
-      .then(() => alert("Thank you. I will get back to you ASAP."))
-      .catch((error) => console.log(error))
-      .finally(() => setIsLoading(false));
+    try {
+      const response = await fetch(
+        "https://formsubmit.co/ajax/rvardhan692@rku.ac.in",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(Object.fromEntries(formData)),
+        }
+      );
+      const result = await response.json();
+
+      if (
+        result.success === "false" &&
+        result.message?.toLowerCase().includes("activation")
+      ) {
+        return;
+      }
+
+      if (!response.ok || result.success !== "true") {
+        throw new Error(result.message || "Unable to send your message.");
+      }
+
+      myForm.reset();
+      alert("Thank you! Your message has been sent successfully.");
+    } catch (error) {
+      alert("Message could not be sent. Please try again shortly.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -50,15 +76,29 @@ const Contact = () => {
             onSubmit={handleSubmit}
             autoComplete="off"
             autoCapitalize="off"
-            // only needed for production (in netlify) to accept form input
-            data-netlify="true"
           >
+            <input
+              type="hidden"
+              name="_subject"
+              value="New portfolio contact message"
+            />
+            <input type="hidden" name="_template" value="table" />
+            <input
+              type="text"
+              name="_honey"
+              className="hidden"
+              tabIndex="-1"
+              autoComplete="off"
+              aria-hidden="true"
+            />
+
             {/* input group */}
-            <div className="flex gap-x-6 w-full">
+            <div className="flex w-full flex-col gap-6 sm:flex-row sm:gap-x-6">
               <input
                 type="text"
                 name="name"
                 placeholder="Name"
+                aria-label="Name"
                 className="input"
                 disabled={isLoading}
                 aria-disabled={isLoading}
@@ -69,6 +109,7 @@ const Contact = () => {
                 type="email"
                 name="email"
                 placeholder="E-mail"
+                aria-label="Email address"
                 className="input"
                 disabled={isLoading}
                 aria-disabled={isLoading}
@@ -80,6 +121,7 @@ const Contact = () => {
               type="text"
               name="subject"
               placeholder="Subject"
+              aria-label="Subject"
               className="input"
               disabled={isLoading}
               aria-disabled={isLoading}
@@ -89,6 +131,7 @@ const Contact = () => {
             <textarea
               name="message"
               placeholder="Message..."
+              aria-label="Message"
               className="textarea"
               disabled={isLoading}
               aria-disabled={isLoading}
@@ -102,7 +145,7 @@ const Contact = () => {
               aria-disabled={isLoading}
             >
               <span className="group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500">
-                Let's talk
+                {isLoading ? "Sending..." : "Let's talk"}
               </span>
 
               <BsArrowRight
@@ -110,6 +153,7 @@ const Contact = () => {
                 aria-hidden
               />
             </button>
+
           </motion.form>
         </div>
       </div>

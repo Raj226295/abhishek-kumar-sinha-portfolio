@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { FaQuoteLeft } from "react-icons/fa";
+import Link from "next/link";
+import { BsArrowUpRight } from "react-icons/bs";
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -7,27 +8,38 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-const testimonialData = [
+const projectHighlights = [
   {
-    image: "/t-avt-1.png",
-    name: "Anne Smith",
-    position: "Customer",
-    message:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum expedita odit beatae, cupiditate saepe quam officia aut placeat quas neque!",
+    image: "/projects/house-of-tattva.png",
+    name: "House of Tattva",
+    category: "E-Commerce Website",
+    description:
+      "A modern e-commerce platform with product listings, cart, wishlist, and secure checkout.",
+    link: "https://www.thehouseoftattva.com/",
   },
   {
-    image: "/t-avt-2.png",
-    name: "Jane Doe",
-    position: "Customer",
-    message:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum expedita odit beatae, cupiditate saepe quam officia aut placeat quas neque!",
+    image: "/projects/aryass.png",
+    name: "ARYASS",
+    category: "Retail & Wholesale Platform",
+    description:
+      "A retail and wholesale shopping platform with product variants, cart, and order management.",
+    link: "https://aryass.com/",
   },
   {
-    image: "/t-avt-3.png",
-    name: "Jhon Doe",
-    position: "Customer",
-    message:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum expedita odit beatae, cupiditate saepe quam officia aut placeat quas neque!",
+    image: "/projects/pk-business.png",
+    name: "PK Business Solution",
+    category: "Business Services Platform",
+    description:
+      "A digital services platform for GST, accounting, business registration, influencer marketing, and web development.",
+    link: "https://pkbusinesssolution.in/",
+  },
+  {
+    image: "/projects/ayush-kursela.png",
+    name: "Ayush Kursela",
+    category: "Snacks & Food E-Commerce Website",
+    description:
+      "A responsive food e-commerce website showcasing traditional Indian snacks, product collections, shopping functionality, and an engaging user experience.",
+    link: "https://ayushkursela.com/",
   },
 ];
 
@@ -39,48 +51,41 @@ const TestimonialSlider = () => {
         clickable: true,
       }}
       modules={[Navigation, Pagination]}
-      className="h-[400px]"
+      className="h-[500px] sm:h-[440px]"
     >
-      {testimonialData.map((person, i) => (
-        <SwiperSlide key={i}>
-          <div className="flex flex-col items-center md:flex-row gap-x-8 h-full px-16">
-            {/* avatar, name, position */}
-            <div className="w-full max-w-[300px] flex flex-col xl:justify-center items-center relative mx-auto xl:mx-0">
-              <div className="flex flex-col justify-center text-center">
-                {/* avatar */}
-                <div className="mb-2 mx-auto">
-                  <Image
-                    src={person.image}
-                    width={100}
-                    height={100}
-                    alt={person.name}
-                  />
-                </div>
-
-                {/* name */}
-                <div className="text-lg">{person.name}</div>
-
-                {/* position */}
-                <div className="text-[12px] uppercase font-extralight tracking-widest">
-                  {person.position}
-                </div>
-              </div>
+      {projectHighlights.map((project) => (
+        <SwiperSlide key={project.name}>
+          <div className="flex h-full flex-col items-center justify-center gap-6 px-12 md:flex-row md:gap-x-10 md:px-16 xl:gap-x-14">
+            <div className="relative aspect-video w-full max-w-[460px] overflow-hidden rounded-xl border border-white/10 bg-primary/50 shadow-2xl">
+              <Image
+                src={project.image}
+                alt={`${project.name} website homepage`}
+                fill
+                sizes="(max-width: 767px) calc(100vw - 96px), 460px"
+                className="object-cover object-top transition-transform duration-500 hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none"
+              />
             </div>
 
-            {/* quote & message */}
-            <div className="flex-1 flex flex-col justify-center before:w-[1px] xl:before:bg-white/20 xl:before:absolute xl:before:left-0 xl:before:h-[200px] relative xl:pl-20">
-              {/* quote icon */}
-              <div className="mb-4">
-                <FaQuoteLeft
-                  className="text-4xl xl:text-6xl text-white/20 mx-auto md:mx-0"
-                  aria-aria-hidden
-                />
-              </div>
-
-              {/* message */}
-              <div className="xl:text-lg text-center md:text-left">
-                {person.message}
-              </div>
+            <div className="relative flex max-w-[480px] flex-1 flex-col justify-center text-center md:min-h-[230px] md:border-l md:border-white/20 md:pl-10 md:text-left xl:pl-14">
+              <p className="mb-2 text-sm font-medium uppercase tracking-[0.18em] text-accent">
+                {project.category}
+              </p>
+              <h3 className="mb-3 text-2xl font-semibold text-white xl:text-3xl">
+                {project.name}
+              </h3>
+              <p className="mb-6 leading-relaxed text-white/70">
+                {project.description}
+              </p>
+              <Link
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`View ${project.name} live project`}
+                className="mx-auto inline-flex w-fit items-center gap-2 border-b border-accent pb-1 text-sm font-medium uppercase tracking-wider text-white transition-colors duration-300 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent md:mx-0 motion-reduce:transition-none"
+              >
+                View Live Project
+                <BsArrowUpRight aria-hidden="true" />
+              </Link>
             </div>
           </div>
         </SwiperSlide>

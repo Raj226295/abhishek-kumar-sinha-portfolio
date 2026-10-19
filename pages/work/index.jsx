@@ -7,12 +7,12 @@ import { fadeIn } from "../../variants";
 
 const Work = () => {
   return (
-    <div className="h-full bg-primary/30 py-36 flex items-center">
+    <div className="h-full overflow-y-auto overflow-x-hidden bg-primary/30 py-32 xl:py-36">
       <Circles />
-      <div className="container mx-auto">
-        <div className="flex flex-col xl:flex-row gap-x-8">
+      <div className="container mx-auto flex min-h-full items-center">
+        <div className="flex w-full flex-col gap-x-8 xl:flex-row">
           {/* text */}
-          <div className="text-center flex xl:w-[30vw] flex-col lg:text-left mb-4 xl:mb-0">
+          <div className="mb-8 flex flex-col text-center lg:text-left xl:mb-0 xl:w-[30vw]">
             <motion.h2
               variants={fadeIn("up", 0.2)}
               initial="hidden"
@@ -20,21 +20,22 @@ const Work = () => {
               exit="hidden"
               className="h2 xl:mt-12"
             >
-              My work <span className="text-accent">.</span>
+              My Work<span className="text-accent">.</span>
             </motion.h2>
             <motion.p
               variants={fadeIn("up", 0.4)}
               initial="hidden"
               animate="show"
               exit="hidden"
-              className="mb-4 max-w-[400px] mx-auto lg:mx-0"
+              className="mx-auto mb-4 max-w-[430px] lg:mx-0"
             >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-              tempora eligendi, quisquam tempore sint reiciendis.
+              Explore a collection of websites and applications I&apos;ve worked
+              on, combining creative design, modern technologies, and
+              functional user experiences.
             </motion.p>
           </div>
 
-          {/* slider */}
+          {/* projects */}
           <motion.div
             variants={fadeIn("down", 0.6)}
             initial="hidden"

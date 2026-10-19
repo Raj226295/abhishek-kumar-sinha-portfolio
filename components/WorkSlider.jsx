@@ -8,109 +8,78 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 
-const workSlides = {
-  slides: [
-    {
-      images: [
-        {
-          title: "title",
-          path: "/thumb1.jpg",
-          link: "http://example.com",
-        },
-        {
-          title: "title",
-          path: "/thumb2.jpg",
-          link: "http://example.com",
-        },
-        {
-          title: "title",
-          path: "/thumb3.jpg",
-          link: "http://example.com",
-        },
-        {
-          title: "title",
-          path: "/thumb4.jpg",
-          link: "http://example.com",
-        },
-      ],
-    },
-    {
-      images: [
-        {
-          title: "title",
-          path: "/thumb4.jpg",
-          link: "http://example.com",
-        },
-        {
-          title: "title",
-          path: "/thumb1.jpg",
-          link: "http://example.com",
-        },
-        {
-          title: "title",
-          path: "/thumb2.jpg",
-          link: "http://example.com",
-        },
-        {
-          title: "title",
-          path: "/thumb3.jpg",
-          link: "http://example.com",
-        },
-      ],
-    },
-  ],
-};
+const projects = [
+  {
+    title: "House of Tattva",
+    path: "/thumb1.jpg",
+    link: "https://www.thehouseoftattva.com/",
+  },
+  {
+    title: "ARYASS",
+    path: "/thumb2.jpg",
+    link: "https://aryass.com/",
+  },
+  {
+    title: "PK Business Solution",
+    path: "/thumb3.jpg",
+    link: "https://pkbusinesssolution.in/",
+  },
+  {
+    title: "Ayush Kursela",
+    path: "/thumb4.jpg",
+    link: "https://ayushkursela.com/",
+  },
+];
+
+const workSlides = [
+  projects,
+  [projects[3], projects[0], projects[1], projects[2]],
+];
 
 const WorkSlider = () => {
   return (
     <Swiper
+      id="projects"
       spaceBetween={10}
-      pagination={{
-        clickable: true,
-      }}
+      pagination={{ clickable: true }}
       modules={[Pagination]}
       className="h-[280px] sm:h-[480px]"
     >
-      {workSlides.slides.map((slide, i) => (
-        <SwiperSlide key={i}>
+      {workSlides.map((slide, slideIndex) => (
+        <SwiperSlide key={slideIndex}>
           <div className="grid grid-cols-2 grid-rows-2 gap-4">
-            {slide.images.map((image, imageI) => (
+            {slide.map((project) => (
               <div
-                className="relative rounded-lg overflow-hidden flex items-center justify-center group"
-                key={imageI}
+                className="group relative flex items-center justify-center overflow-hidden rounded-lg"
+                key={project.title}
               >
-                <div className="flex items-center justify-center relative overflow-hidden group">
-                  {/* image */}
+                <div className="group relative flex items-center justify-center overflow-hidden">
                   <Image
-                    src={image.path}
-                    alt={image.title}
+                    src={project.path}
+                    alt={`${project.title} website homepage`}
                     width={500}
                     height={300}
                   />
 
-                  {/* overlay gradient */}
                   <div
-                    className="absolute inset-0 bg-gradient-to-l from-transparent via-[#e838cc] to-[#4a22bd] opacity-0 group-hover:opacity-80 transition-all duration-700"
-                    aria-hidden
+                    className="absolute inset-0 bg-gradient-to-l from-transparent via-[#e838cc] to-[#4a22bd] opacity-0 transition-all duration-700 group-hover:opacity-80 group-focus-within:opacity-80"
+                    aria-hidden="true"
                   />
 
-                  {/* title */}
-                  <div className="absolute bottom-0 translate-y-full group-hover:-translate-y-10 group-hover:xl:-translate-y-20 transition-all duration-300">
+                  <div className="absolute bottom-0 translate-y-full transition-all duration-300 group-hover:-translate-y-10 group-focus-within:-translate-y-10 group-hover:xl:-translate-y-20 group-focus-within:xl:-translate-y-20">
                     <Link
-                      href={image.link}
+                      href={project.link}
                       target="_blank"
-                      rel="noreferrer noopener"
-                      className="flex items-center gap-x-2 text-[13px] tracking-[0.2em]"
+                      rel="noopener noreferrer"
+                      aria-label={`View ${project.title} live project`}
+                      className="flex items-center gap-x-2 text-[13px] tracking-[0.2em] outline-none focus-visible:ring-2 focus-visible:ring-white"
                     >
-                      {/* title part 1 */}
                       <div className="delay-100">LIVE</div>
-                      {/* title part 2 */}
-                      <div className="translate-y-[500%] group-hover:translate-y-0 transition-all duration-300 delay-150">
+                      <div className="translate-y-[500%] transition-all delay-150 duration-300 group-hover:translate-y-0 group-focus-within:translate-y-0">
                         PROJECT
                       </div>
-                      {/* icon */}
-                      <div className="text-xl translate-y-[500%] group-hover:translate-y-0 transition-all duration-300 delay-150">
-                        <BsArrowRight aria-hidden />
+                      <div className="translate-y-[500%] text-xl transition-all delay-150 duration-300 group-hover:translate-y-0 group-focus-within:translate-y-0">
+                        <BsArrowRight aria-hidden="true" />
                       </div>
                     </Link>
                   </div>

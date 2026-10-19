@@ -20,8 +20,8 @@ const Home = () => {
             exit="hidden"
             className="h1"
           >
-            Transforming Ideas <br /> Into{" "}
-            <span className="text-accent">Digital Reality</span>
+            Crafting Digital <br />
+            <span className="text-accent">Experiences That Inspire.</span>
           </motion.h1>
 
           {/* subtitle */}
@@ -32,10 +32,9 @@ const Home = () => {
             exit="hidden"
             className="max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-10 xl:mb-16"
           >
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate,
-            exercitationem harum, quia nulla temporibus deleniti libero veniam
-            vero beatae numquam ducimus illum ab similique ipsam tempore fugit
-            quod laudantium debitis.
+            I&apos;m Raj Vardhan Singh, a Computer Science student and passionate
+            Web Developer. I build modern, responsive, and interactive websites
+            that combine creative design with seamless functionality.
           </motion.p>
 
           {/* btn */}

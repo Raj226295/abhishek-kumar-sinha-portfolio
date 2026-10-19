@@ -1,43 +1,31 @@
 import Link from "next/link";
 
 import {
-  RiYoutubeLine,
-  RiInstagramLine,
   RiFacebookLine,
-  RiDribbbleLine,
+  RiInstagramLine,
+  RiLinkedinLine,
   RiGithubLine,
-  RiPinterestLine,
 } from "react-icons/ri";
 
 export const socialData = [
   {
-    name: "YouTube",
-    link: "https://youtube.com",
-    Icon: RiYoutubeLine,
-  },
-  {
-    name: "Instagram",
-    link: "https://instagram.com",
-    Icon: RiInstagramLine,
-  },
-  {
     name: "Facebook",
-    link: "https://facebook.com",
+    link: "https://www.facebook.com/share/19xcFkkZw8/",
     Icon: RiFacebookLine,
   },
   {
-    name: "Dribbble",
-    link: "https://dribbble.com",
-    Icon: RiDribbbleLine,
+    name: "Instagram",
+    link: "https://www.instagram.com/iam_rajput9440?obrf=MWM2bWphNmU0ejJvdQ==",
+    Icon: RiInstagramLine,
   },
   {
-    name: "Pinterest",
-    link: "https://pinterest.com",
-    Icon: RiPinterestLine,
+    name: "LinkedIn",
+    link: "https://www.linkedin.com/in/raj-vardhan-singh-89178431a/",
+    Icon: RiLinkedinLine,
   },
   {
     name: "Github",
-    link: "https://github.com/sanidhyy/modern-portfolio",
+    link: "https://github.com/Raj226295",
     Icon: RiGithubLine,
   },
 ];

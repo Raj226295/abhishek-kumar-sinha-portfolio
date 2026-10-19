@@ -1,13 +1,11 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import CountUp from "react-countup";
 import {
   FaCss3,
   FaFigma,
   FaHtml5,
   FaJs,
   FaReact,
-  FaWordpress,
 } from "react-icons/fa";
 import {
   SiAdobephotoshop,
@@ -16,7 +14,6 @@ import {
   SiNextdotjs,
 } from "react-icons/si";
 
-import Avatar from "../../components/Avatar";
 import Circles from "../../components/Circles";
 import { fadeIn } from "../../variants";
 
@@ -34,7 +31,6 @@ export const aboutData = [
           FaReact,
           SiNextdotjs,
           SiFramer,
-          FaWordpress,
         ],
       },
       {
@@ -44,15 +40,19 @@ export const aboutData = [
     ],
   },
   {
-    title: "awards",
+    title: "projects",
     info: [
       {
-        title: "Webby Awards - Honoree",
-        stage: "2011 - 2012",
+        title: "Portfolio Website",
+        stage: "React",
       },
       {
-        title: "Adobe Design Achievement Awards - Finalist",
-        stage: "2009 - 2010",
+        title: "Online Learning Platform",
+        stage: "React + Vite",
+      },
+      {
+        title: "Aryass E-commerce",
+        stage: "JavaScript",
       },
     ],
   },
@@ -60,16 +60,16 @@ export const aboutData = [
     title: "experience",
     info: [
       {
-        title: "UX/UI Designer - XYZ Company",
-        stage: "2012 - 2023",
+        title: "Built a responsive personal portfolio",
+        stage: "2026",
       },
       {
-        title: "Web Developer - ABC Agency",
-        stage: "2010 - 2012",
+        title: "Built a component-based learning platform",
+        stage: "2026",
       },
       {
-        title: "Intern - DEF Corporation",
-        stage: "2008 - 2010",
+        title: "Built a responsive e-commerce experience",
+        stage: "2026",
       },
     ],
   },
@@ -77,19 +77,18 @@ export const aboutData = [
     title: "credentials",
     info: [
       {
-        title: "Web Development - ABC University, LA, CA",
-        stage: "2011",
-      },
-      {
-        title: "Computer Science Diploma - AV Technical Institute",
-        stage: "2009",
-      },
-      {
-        title: "Certified Graphic Designer - ABC Institute, Los Angeles, CA",
-        stage: "2006",
+        title: "B.Tech — Computer Science Engineering",
+        stage: "In progress",
       },
     ],
   },
+];
+
+const stats = [
+  { value: "B.Tech", label: "Computer Science" },
+  { value: "3+", label: "Web Projects" },
+  { value: "Full Stack", label: "Learning & Building" },
+  { value: "2026", label: "Portfolio" },
 ];
 
 const About = () => {
@@ -98,17 +97,6 @@ const About = () => {
   return (
     <div className="h-full bg-primary/30 py-32 text-center xl:text-left">
       <Circles />
-
-      {/* avatar img */}
-      <motion.div
-        variants={fadeIn("right", 0.2)}
-        initial="hidden"
-        animate="show"
-        exit="hidden"
-        className="hidden xl:flex absolute bottom-0 -left-[370px]"
-      >
-        <Avatar />
-      </motion.div>
 
       <div className="container mx-auto h-full flex flex-col items-center xl:flex-row gap-x-6">
         {/* text */}
@@ -120,8 +108,8 @@ const About = () => {
             exit="hidden"
             className="h2"
           >
-            Captivating <span className="text-accent">stories</span> birth
-            magnificent designs.
+            Turning <span className="text-accent">Ideas</span> Into Digital
+            Experiences.
           </motion.h2>
           <motion.p
             variants={fadeIn("right", 0.4)}
@@ -129,9 +117,11 @@ const About = () => {
             animate="show"
             className="max-w-[500px] mx-auto xl:mx-0 mb-6 xl:mb-12 px-2 xl:px-0"
           >
-            10 years ago, I begin freelancing as a developer. Since then, I've
-            done remote work for agencies, consulted for startups, and
-            collabrated on digital products for business and consumer use.
+            I&apos;m Raj Vardhan Singh, a Computer Science Engineering student
+            and passionate web developer. I specialize in building modern,
+            responsive websites and interactive digital experiences. I enjoy
+            transforming creative ideas into functional, user-friendly
+            products.
           </motion.p>
 
           {/* counters */}
@@ -141,46 +131,24 @@ const About = () => {
             animate="show"
             className="hidden md:flex md:max-w-xl xl:max-w-none mx-auto xl:mx-0 mb-8"
           >
-            <div className="flex flex-1 xl:gap-x-6">
-              {/* experience */}
-              <div className="relative flex-1 after:w-[1px] after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0">
-                <div className="text-2xl xl:text-4xl font-extrabold text-accent mb-2">
-                  <CountUp start={0} end={10} duration={5} />
+            <div className="flex flex-1 xl:gap-x-4">
+              {stats.map((stat, statI) => (
+                <div
+                  key={stat.label}
+                  className={`relative flex-1 px-2 first:pl-0 ${
+                    statI < stats.length - 1
+                      ? "after:w-[1px] after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0"
+                      : ""
+                  }`}
+                >
+                  <div className="text-xl xl:text-3xl font-extrabold text-accent mb-2 whitespace-nowrap">
+                    {stat.value}
+                  </div>
+                  <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[110px]">
+                    {stat.label}
+                  </div>
                 </div>
-                <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
-                  Years of experience.
-                </div>
-              </div>
-
-              {/* clients */}
-              <div className="relative flex-1 after:w-[1px] after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0">
-                <div className="text-2xl xl:text-4xl font-extrabold text-accent mb-2">
-                  <CountUp start={0} end={250} duration={5} />
-                </div>
-                <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
-                  Satisfied clients.
-                </div>
-              </div>
-
-              {/* projects */}
-              <div className="relative flex-1 after:w-[1px] after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0">
-                <div className="text-2xl xl:text-4xl font-extrabold text-accent mb-2">
-                  <CountUp start={0} end={650} duration={5} />
-                </div>
-                <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
-                  Finished projects.
-                </div>
-              </div>
-
-              {/* awards */}
-              <div className="relative flex-1">
-                <div className="text-2xl xl:text-4xl font-extrabold text-accent mb-2">
-                  <CountUp start={0} end={8} duration={5} />
-                </div>
-                <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
-                  Winning awards.
-                </div>
-              </div>
+              ))}
             </div>
           </motion.div>
         </div>

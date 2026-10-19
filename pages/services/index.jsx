@@ -5,16 +5,14 @@ import Circles from "../../components/Circles";
 import ServiceSlider from "../../components/ServiceSlider";
 import { fadeIn } from "../../variants";
 
-export const serviceData = [];
-
 const Services = () => {
   return (
-    <div className="h-full bg-primary/30 py-36 flex items-center">
+    <div className="h-full overflow-y-auto overflow-x-hidden bg-primary/30 py-32 xl:py-36">
       <Circles />
-      <div className="container mx-auto">
-        <div className="flex flex-col xl:flex-row gap-x-8">
+      <div className="container mx-auto min-h-full flex items-center">
+        <div className="flex w-full flex-col gap-y-8 xl:flex-row xl:gap-x-10 xl:gap-y-0">
           {/* text */}
-          <div className="text-center flex xl:w-[30vw] flex-col lg:text-left mb-4 xl:mb-0">
+          <div className="flex flex-col text-center lg:text-left xl:w-[30%] xl:shrink-0">
             <motion.h2
               variants={fadeIn("up", 0.2)}
               initial="hidden"
@@ -22,7 +20,7 @@ const Services = () => {
               exit="hidden"
               className="h2 xl:mt-8"
             >
-              My services <span className="text-accent">.</span>
+              My <span className="text-accent">Services.</span>
             </motion.h2>
             <motion.p
               variants={fadeIn("up", 0.4)}
@@ -31,18 +29,19 @@ const Services = () => {
               exit="hidden"
               className="mb-4 max-w-[400px] mx-auto lg:mx-0"
             >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-              tempora eligendi, quisquam tempore sint reiciendis.
+              I create modern, responsive, and interactive digital experiences,
+              combining creative design with powerful functionality to bring
+              ideas to life.
             </motion.p>
           </div>
 
-          {/* slider */}
+          {/* services slider */}
           <motion.div
             variants={fadeIn("down", 0.6)}
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="w-full xl:max-w-[65%]"
+            className="w-full xl:max-w-[70%]"
           >
             <ServiceSlider />
           </motion.div>

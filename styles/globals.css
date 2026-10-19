@@ -18,6 +18,47 @@
   color: #f13024;
 }
 
+@keyframes services-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.services-marquee {
+  overscroll-behavior-inline: contain;
+  scrollbar-width: none;
+  touch-action: pan-x;
+}
+
+.services-marquee::-webkit-scrollbar {
+  display: none;
+}
+
+.services-marquee-track {
+  animation: services-marquee 36s linear infinite;
+  will-change: transform;
+}
+
+.services-marquee:hover .services-marquee-track,
+.services-marquee:active .services-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services-marquee-track {
+    animation: none;
+    transform: none;
+    will-change: auto;
+  }
+
+  .services-marquee-copy {
+    display: none;
+  }
+}
+
 @layer base {
   body {
     @apply bg-secondary overflow-hidden leading-relaxed;
