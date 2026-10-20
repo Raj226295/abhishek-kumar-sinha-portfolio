@@ -20,12 +20,12 @@ export const socialData = [
   },
   {
     name: "LinkedIn",
-    link: "https://www.linkedin.com/in/raj-vardhan-singh-89178431a/",
+    link: "https://www.linkedin.com/in/abhishek-kumar-sinha-385a93298?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
     Icon: RiLinkedinLine,
   },
   {
     name: "Github",
-    link: "https://github.com/Raj226295",
+    link: "https://github.com/AbhishekWEBDev1",
     Icon: RiGithubLine,
   },
 ];
