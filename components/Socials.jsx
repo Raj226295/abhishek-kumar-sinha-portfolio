@@ -10,12 +10,12 @@ import {
 export const socialData = [
   {
     name: "Facebook",
-    link: "https://www.facebook.com/share/19xcFkkZw8/",
+    link: "https://www.facebook.com/share/1EVE1PekUx/?mibextid=wwXIfr",
     Icon: RiFacebookLine,
   },
   {
     name: "Instagram",
-    link: "https://www.instagram.com/iam_rajput9440?obrf=MWM2bWphNmU0ejJvdQ==",
+    link: "https://www.instagram.com/_somu_sam.in?vrfl=cGV4N3FrOGkzcndt&utm_source=qr",
     Icon: RiInstagramLine,
   },
   {

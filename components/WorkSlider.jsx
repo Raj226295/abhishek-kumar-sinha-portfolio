@@ -30,11 +30,31 @@ const projects = [
     path: "/thumb4.jpg",
     link: "https://ayushkursela.com/",
   },
+  {
+    title: "Tanya Makeovers",
+    path: "/thumb4.jpg",
+    link: "https://www.instagram.com/tanyamakeovers___?cplk=ZHN1enRwODZoOWUz",
+  },
+  {
+    title: "Keshri Polyclinic",
+    path: "/thumb1.jpg",
+    link: "https://www.instagram.com/keshripolyclinic?vrfl=Z2pqdHA2aW9meTA5",
+  },
+  {
+    title: "Hotel Park Square",
+    path: "/thumb2.jpg",
+    link: "https://www.instagram.com/hotel_parksquare?exln=YjdwYWNvdmc3cHRw",
+  },
+  {
+    title: "Banjara Restaurant",
+    path: "/thumb3.jpg",
+    link: "https://www.instagram.com/banjara_restaurant_?mdxt=MTB1dG5iOGNtMmRzdA==",
+  },
 ];
 
 const workSlides = [
-  projects,
-  [projects[3], projects[0], projects[1], projects[2]],
+  projects.slice(0, 4),
+  projects.slice(4, 8),
 ];
 
 const WorkSlider = () => {

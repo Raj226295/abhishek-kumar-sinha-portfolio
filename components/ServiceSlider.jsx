@@ -1,67 +1,101 @@
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
+  RxArrowLeft,
+  RxArrowRight,
   RxArrowTopRight,
-  RxComponent2,
-  RxDesktop,
-  RxLayers,
-  RxMobile,
-  RxPencil2,
-  RxRocket,
 } from "react-icons/rx";
-import { FaDatabase, FaShoppingCart } from "react-icons/fa";
+import {
+  LuBot,
+  LuClapperboard,
+  LuCode2,
+  LuMegaphone,
+  LuPalette,
+  LuTarget,
+} from "react-icons/lu";
 
 export const serviceData = [
   {
-    Icon: RxDesktop,
-    title: "Web Development",
+    Icon: LuTarget,
+    title: "Performance Marketing",
     description:
-      "Modern, responsive, and high-performance websites built with clean code and seamless user experiences.",
+      "Drive measurable business growth through Meta Ads, Google Ads, lead generation, and data-driven advertising strategies.",
+    services: [
+      "Performance Marketing",
+      "Meta Ads Management",
+      "Google Ads Management",
+      "Social Media Advertising",
+      "Lead Generation",
+      "Digital Marketing Strategy",
+    ],
   },
   {
-    Icon: FaShoppingCart,
-    title: "E-Commerce Development",
+    Icon: LuMegaphone,
+    title: "Social Media & SEO",
     description:
-      "Complete online shopping experiences with product management, cart functionality, checkout, and payment integration.",
+      "Strengthen your online presence with social media management, SEO, local search optimization, and strategic audience engagement.",
+    services: [
+      "Social Media Management",
+      "SEO & Local SEO",
+      "Google Business Profile Management",
+    ],
   },
   {
-    Icon: RxMobile,
-    title: "App Development",
+    Icon: LuClapperboard,
+    title: "Creative & Media Production",
     description:
-      "Modern, user-friendly mobile applications with intuitive interfaces and practical functionality.",
+      "Create engaging content through professional video production, photography, editing, graphic design, and visual storytelling.",
+    services: [
+      "Content Creation",
+      "Graphic Design & Creative Design",
+      "Video Production",
+      "Video Editing",
+      "Cinematic Shoots",
+      "Product Photography & Videography",
+      "Voiceover & Audio Production",
+    ],
   },
   {
-    Icon: RxPencil2,
-    title: "UI/UX Design",
+    Icon: LuPalette,
+    title: "Branding & Influencer Marketing",
     description:
-      "Creative and intuitive interface designs focused on usability, accessibility, and engaging digital experiences.",
+      "Build memorable brands through creative strategies, influencer collaborations, UGC campaigns, and compelling advertising content.",
+    services: [
+      "Branding & Brand Strategy",
+      "Influencer Marketing & Shoots",
+      "UGC Content & UGC Ads",
+      "Content & Ad Copywriting",
+    ],
   },
   {
-    Icon: RxComponent2,
-    title: "Logo Design",
+    Icon: LuBot,
+    title: "AI & Marketing Automation",
     description:
-      "Unique, modern, and memorable logos that communicate brand identity and create lasting impressions.",
+      "Simplify business operations with AI-generated content, intelligent chatbots, WhatsApp automation, and smart marketing workflows.",
+    services: [
+      "AI Image & Video Generation",
+      "AI Music & Voice Generation",
+      "Marketing Automation",
+      "WhatsApp Marketing & Automation",
+      "AI Chatbot & WhatsApp AI Agent",
+    ],
   },
   {
-    Icon: RxLayers,
-    title: "Graphics Design",
+    Icon: LuCode2,
+    title: "Web, App & CRM Solutions",
     description:
-      "Professional social media graphics, banners, posters, thumbnails, and creative marketing materials.",
-  },
-  {
-    Icon: FaDatabase,
-    title: "Backend & Database",
-    description:
-      "Reliable backend functionality, database integration, APIs, and data management for dynamic web applications.",
-  },
-  {
-    Icon: RxRocket,
-    title: "Website Optimization",
-    description:
-      "Improving website loading speed, SEO fundamentals, mobile responsiveness, performance, and user experience.",
+      "Develop modern websites, mobile applications, intuitive user experiences, and custom CRM solutions for growing businesses.",
+    services: [
+      "Website Development",
+      "Web Application Development",
+      "Mobile App Development",
+      "UI/UX Design",
+      "CRM Development & Management",
+    ],
   },
 ];
 
 const ServiceCard = ({ item }) => (
-  <article className="group flex h-auto min-h-[300px] w-[min(85vw,360px)] shrink-0 flex-col rounded-lg border border-white/10 bg-[rgba(65,47,123,0.22)] px-6 py-6 transition-all duration-300 hover:-translate-y-[6px] hover:border-accent/50 hover:bg-[rgba(89,65,169,0.2)] hover:shadow-[0_12px_35px_rgba(241,48,36,0.12)] sm:h-[270px] sm:min-h-0 md:w-[360px] xl:w-[380px] motion-reduce:transform-none motion-reduce:transition-none">
+  <article className="group flex h-auto min-h-[300px] w-full flex-col rounded-lg border border-white/10 bg-[rgba(65,47,123,0.22)] px-6 py-6 transition-all duration-300 hover:-translate-y-[6px] hover:border-accent/50 hover:bg-[rgba(89,65,169,0.2)] hover:shadow-[0_12px_35px_rgba(241,48,36,0.12)] sm:h-[270px] sm:min-h-0 motion-reduce:transform-none motion-reduce:transition-none">
     <div className="mb-4 text-4xl text-accent transition-transform duration-300 group-hover:scale-110 motion-reduce:transform-none motion-reduce:transition-none">
       <item.Icon aria-hidden />
     </div>
@@ -81,30 +115,141 @@ const ServiceCard = ({ item }) => (
   </article>
 );
 
-const ServiceSlider = () => {
-  return (
-    <div
-      className="services-marquee w-full cursor-grab overflow-x-auto overflow-y-hidden pb-4 scrollbar-none active:cursor-grabbing focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
-      aria-label="Services carousel"
-      tabIndex={0}
-    >
-      <div className="services-marquee-track flex w-max py-2">
-        <div className="services-marquee-sequence flex shrink-0 gap-4 pr-4" role="list">
-          {serviceData.map((item) => (
-            <div key={item.title} role="listitem">
-              <ServiceCard item={item} />
-            </div>
-          ))}
-        </div>
+const getScrollBehavior = () =>
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ? "auto"
+    : "smooth";
 
-        <div
-          className="services-marquee-copy services-marquee-sequence flex shrink-0 gap-4 pr-4"
-          aria-hidden="true"
+const ServiceSlider = () => {
+  const scrollerRef = useRef(null);
+  const [canScrollPrevious, setCanScrollPrevious] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(true);
+
+  const updateNavigation = useCallback(() => {
+    const scroller = scrollerRef.current;
+    if (!scroller) return;
+
+    const maxScrollLeft = scroller.scrollWidth - scroller.clientWidth;
+    setCanScrollPrevious(scroller.scrollLeft > 1);
+    setCanScrollNext(scroller.scrollLeft < maxScrollLeft - 1);
+  }, []);
+
+  const handleWheel = useCallback((event) => {
+    const scroller = scrollerRef.current;
+    if (!scroller || Math.abs(event.deltaX) >= Math.abs(event.deltaY)) return;
+
+    const maxScrollLeft = scroller.scrollWidth - scroller.clientWidth;
+    const canMove =
+      (event.deltaY < 0 && scroller.scrollLeft > 1) ||
+      (event.deltaY > 0 && scroller.scrollLeft < maxScrollLeft - 1);
+
+    if (!canMove) return;
+
+    event.preventDefault();
+    scroller.scrollBy({ left: event.deltaY, behavior: "auto" });
+  }, []);
+
+  useEffect(() => {
+    const scroller = scrollerRef.current;
+    if (!scroller) return undefined;
+
+    updateNavigation();
+    scroller.addEventListener("scroll", updateNavigation, { passive: true });
+    scroller.addEventListener("wheel", handleWheel, { passive: false });
+    window.addEventListener("resize", updateNavigation);
+
+    const resizeObserver =
+      typeof ResizeObserver === "undefined"
+        ? null
+        : new ResizeObserver(updateNavigation);
+    resizeObserver?.observe(scroller);
+
+    return () => {
+      scroller.removeEventListener("scroll", updateNavigation);
+      scroller.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("resize", updateNavigation);
+      resizeObserver?.disconnect();
+    };
+  }, [handleWheel, updateNavigation]);
+
+  const scrollByCard = useCallback((direction) => {
+    const scroller = scrollerRef.current;
+    const card = scroller?.querySelector("[data-service-card]");
+    if (!scroller || !card) return;
+
+    const styles = window.getComputedStyle(scroller);
+    const gap = Number.parseFloat(styles.columnGap || styles.gap) || 0;
+    const distance = card.getBoundingClientRect().width + gap;
+
+    scroller.scrollBy({
+      left: direction * distance,
+      behavior: getScrollBehavior(),
+    });
+  }, []);
+
+  const handleKeyDown = (event) => {
+    const scroller = scrollerRef.current;
+    if (!scroller) return;
+
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      scrollByCard(-1);
+    } else if (event.key === "ArrowRight") {
+      event.preventDefault();
+      scrollByCard(1);
+    } else if (event.key === "Home") {
+      event.preventDefault();
+      scroller.scrollTo({ left: 0, behavior: getScrollBehavior() });
+    } else if (event.key === "End") {
+      event.preventDefault();
+      scroller.scrollTo({
+        left: scroller.scrollWidth,
+        behavior: getScrollBehavior(),
+      });
+    }
+  };
+
+  return (
+    <div className="w-full min-w-0">
+      <div className="mb-3 hidden items-center justify-end gap-2 md:flex">
+        <button
+          type="button"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-xl text-white transition-colors duration-300 hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:border-white/20 disabled:hover:text-white motion-reduce:transition-none"
+          onClick={() => scrollByCard(-1)}
+          disabled={!canScrollPrevious}
+          aria-label="Previous service"
         >
-          {serviceData.map((item) => (
-            <ServiceCard key={`duplicate-${item.title}`} item={item} />
-          ))}
-        </div>
+          <RxArrowLeft aria-hidden />
+        </button>
+        <button
+          type="button"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-xl text-white transition-colors duration-300 hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:border-white/20 disabled:hover:text-white motion-reduce:transition-none"
+          onClick={() => scrollByCard(1)}
+          disabled={!canScrollNext}
+          aria-label="Next service"
+        >
+          <RxArrowRight aria-hidden />
+        </button>
+      </div>
+
+      <div
+        ref={scrollerRef}
+        className="services-marquee flex w-full snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-hidden scroll-smooth pb-4 pt-2 scrollbar-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 motion-reduce:scroll-auto"
+        onKeyDown={handleKeyDown}
+        aria-label="Services carousel"
+        role="list"
+        tabIndex={0}
+      >
+        {serviceData.map((item) => (
+          <div
+            key={item.title}
+            className="w-[85%] min-w-[85%] snap-start md:w-[calc((100%-1rem)/2)] md:min-w-[calc((100%-1rem)/2)]"
+            data-service-card
+            role="listitem"
+          >
+            <ServiceCard item={item} />
+          </div>
+        ))}
       </div>
     </div>
   );

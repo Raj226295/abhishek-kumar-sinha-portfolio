@@ -20,8 +20,11 @@ const Home = () => {
             exit="hidden"
             className="h1 break-words"
           >
-            Crafting Digital <br />
-            <span className="text-accent">Experiences That Inspire.</span>
+            Driving Growth Through <br />
+            <span className="text-accent">
+              Digital Strategies <br />
+              That Deliver.
+            </span>
           </motion.h1>
 
           {/* portrait on smaller screens */}
@@ -43,9 +46,11 @@ const Home = () => {
             exit="hidden"
             className="mx-auto mb-8 max-w-sm xl:mx-0 xl:mb-16 xl:max-w-xl"
           >
-            I&apos;m Raj Vardhan Singh, a Computer Science student and passionate
-            Web Developer. I build modern, responsive, and interactive websites
-            that combine creative design with seamless functionality.
+            I&apos;m Abhishek Kumar Sinha, Founder of Market Fuel and a passionate
+            Performance Marketer. With a Diploma in Computer Science, a BCA, and
+            a Minor in Computer Science from IIT Patna, I combine technical
+            expertise with data-driven marketing strategies to help brands grow,
+            engage audiences, and achieve measurable results.
           </motion.p>
 
           {/* btn */}

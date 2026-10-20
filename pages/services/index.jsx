@@ -29,9 +29,11 @@ const Services = () => {
               exit="hidden"
               className="mx-auto mb-4 max-w-[400px] xl:mx-0"
             >
-              I create modern, responsive, and interactive digital experiences,
-              combining creative design with powerful functionality to bring
-              ideas to life.
+              I help businesses grow through strategic digital marketing,
+              creative content, and technology-driven solutions. From brand
+              strategy and social media to paid advertising, automation, and web
+              &amp; app development, I deliver result-oriented digital experiences
+              that turn ideas into real business growth.
             </motion.p>
           </div>
 

@@ -29,12 +29,12 @@ const Header = () => {
           <div className="flex w-full items-center justify-between sm:w-auto">
             <Link
               href="/"
-              aria-label="Raj Vardhan Singh — home"
+              aria-label="Abhishek Kumar Sinha — home"
               className="whitespace-nowrap text-[clamp(18px,5.5vw,28px)] leading-none"
               onClick={() => setMenuOpen(false)}
             >
-              <span className="font-semibold">raj</span>{" "}
-              <span className="font-light">vardhan singh</span>
+              <span className="font-semibold">abhishek</span>{" "}
+              <span className="font-light">kumar sinha</span>
               <span className="text-accent font-semibold">.</span>
             </Link>
             <button

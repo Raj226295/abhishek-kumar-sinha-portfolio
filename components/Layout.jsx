@@ -25,7 +25,7 @@ const Layout = ({ children }) => {
     >
       {/* metadata */}
       <Head>
-        <title>Raj Vardhan Singh | Portfolio</title>
+        <title>Abhishek Kumar Sinha | Portfolio</title>
         <meta
           name="description"
           content="Raj Vardhan Singh is a Computer Science student and Web Developer building modern, responsive, and interactive websites."
